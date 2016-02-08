@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @department.name %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @department.budget %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @department.start_date %>
+</p>
+
+<p>
+  <strong>Instructor:</strong>
+  <%= "#{@department.instructor.first_name} #{@department.instructor.last_name}" %>
+</p>
+
+<p>
+  <strong>Courses:</strong>
+  <ul>
+  <% @courses.each do |course| %>
+  <li><%= course.title %></li>
+  <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_department_path(@department) %> |
+<%= link_to 'Back', departments_path %>

@@ -1,0 +1,21 @@
+<h1>Pin</h1>
+
+<%= image_tag @pin.image.url(:medium) %>
+<h2><%= @pin.title %></h2>
+<p><%= @pin.description %></p>
+
+<p>
+	<%= @pin.user.email %>
+</p>
+
+<strong><%= link_to "See all pins from the #{@pin.board.name} board.", board_path(@pin.board_id) %></strong>
+
+<br>
+<br>
+
+<%= link_to "Back", root_path %>
+
+<% if user_signed_in? && current_user.email == @pin.user.email %>
+<%= link_to "Delete Pin", pin_path, method: :delete, data: {confirm: "Are you sure?"} %>
+<%= link_to "Edit Pin", edit_pin_path %>
+<% end %>

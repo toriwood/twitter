@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h1><%= @board.name %></h1>
+</p>
+
+<p>
+  <strong>Pins</strong>
+  <p>
+  <% @pins.each do |pin| %>
+  <%= link_to (image_tag pin.image.url(:medium)), pin %><br>
+	<%= link_to pin.title, pin %> <br>
+  <% end %>
+  </p>
+</p>
+
+<%= link_to 'Edit', edit_board_path(@board) %> |
+<%= link_to 'Back', boards_path %>
