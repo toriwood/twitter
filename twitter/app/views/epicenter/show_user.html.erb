@@ -4,10 +4,12 @@
 <p><%= @user.location %></p>
 <p><%= @user.bio %></p>
 
+<% if current_user.id != @user.id %>
 <p>
 	<%= link_to "Unfollow", unfollow_path(id: @user.id), class: "btn btn-danger" %>
 	<%= link_to "Follow", now_following_path(id: @user.id), class: "btn btn-primary" %>
 </p>
+<% end %>
 
 <div class="row">
 	<% @user.tweets.each do |tweet| %>
