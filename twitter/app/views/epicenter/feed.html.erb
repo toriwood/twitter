@@ -1,0 +1,14 @@
+<h1>Your Twitter Feed</h1>
+<p>Hello <%= current_user.name %></p>
+<p>Here are your friends' tweets</p>
+
+<!-- @following_tweets -->
+
+<div>
+	<% @following_tweets.each do |tweet| %>
+		<div>
+			<p><%= tweet.message %></p>
+			<p><strong><em><%= tweet.user.username %></em></strong></p>
+		</div>
+	<% end %>
+</div>
