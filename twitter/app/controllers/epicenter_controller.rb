@@ -3,13 +3,20 @@ class EpicenterController < ApplicationController
   	@following_tweets = []
 		@tweets = Tweet.all
 
-		@tweets.each do |tweet|
-			current_user.following.each do |id|
-				if tweet.user_id == id
-					@following_tweets << tweet
-				end
-			end
-		end
+    @tweets.each do |tweet|
+      if current_user.following.include?(tweet.user_id)
+        @following_tweets << tweet
+      end
+    end
+
+    # old way of writing
+		# @tweets.each do |tweet|
+		# 	current_user.following.each do |id|
+		# 		if tweet.user_id == id
+		# 			@following_tweets << tweet
+		# 		end
+		# 	end
+		# end
   end
 
   def show_user
@@ -20,9 +27,15 @@ class EpicenterController < ApplicationController
   end
 
   def now_following
+    @user = User.find(params[:id])
+    current_user.following.push(@user.id)
+    current_user.save
   end
 
   def unfollow
+    @user = User.find(params[:id])
+    current_user.following.delete(@user.user_id)
+    current_user.save
   end
 
   private
