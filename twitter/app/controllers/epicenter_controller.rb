@@ -30,12 +30,14 @@ class EpicenterController < ApplicationController
     @user = User.find(params[:id])
     current_user.following.push(@user.id)
     current_user.save
+    redirect_to show_user_path(id: @user.id)
   end
 
   def unfollow
     @user = User.find(params[:id])
-    current_user.following.delete(@user.user_id)
+    current_user.following.delete(@user.id)
     current_user.save
+    redirect_to show_user_path(id: @user.id)
   end
 
   private
