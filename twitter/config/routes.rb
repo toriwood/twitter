@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'unfollow' =>	'epicenter#unfollow'
 
+  get 'following' => 'epicenter#following'
+
   resources :tweets
   devise_for :users
 

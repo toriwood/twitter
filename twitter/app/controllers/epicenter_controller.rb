@@ -9,6 +9,15 @@ class EpicenterController < ApplicationController
       end
     end
 
+    @vanity_count = 0
+    @users = User.all
+
+    @users.each do |user|
+      if user.following.include?(current_user.id)
+        @vanity_count += 1
+      end
+    end
+
     # old way of writing
 		# @tweets.each do |tweet|
 		# 	current_user.following.each do |id|
@@ -38,6 +47,9 @@ class EpicenterController < ApplicationController
     current_user.following.delete(@user.id)
     current_user.save
     redirect_to show_user_path(id: @user.id)
+  end
+
+  def following
   end
 
   private

@@ -1,0 +1,12 @@
+<h1>Following:</h1>
+
+<% current_user.following.each do |id| %>
+	
+	<ul>
+		<% @user = User.find(id) %>
+		<li><%= link_to @user.username, show_user_path(id: id) %></li>
+		<li><%= @user.bio %></li>
+	</ul>
+	
+<% end %>
+
