@@ -8,5 +8,5 @@ class Relationship < ActiveRecord::Base
 
 	#user is the follower
 	#friend is the followed
-	belongs_to :friend, class_name: "User"
+	belongs_to :friends, class_name: "User"
 end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'profiles/index'
   get 'profiles/feed'
 
+  resources :relationships
   resources :tweets
   devise_for :users
 
