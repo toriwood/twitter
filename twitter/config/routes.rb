@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  get 'epicenter/feed'
 
-  get 'show_user' => 'epicenter#show_user'
+	#route for show page
+  get 'profiles/:id' => 'profiles#show', as: :profile
 
-  get 'now_following' => 'epicenter#now_following'
-
-  get 'unfollow' =>	'epicenter#unfollow'
-
-  get 'following' => 'epicenter#following'
+  #route for index page
+ 	get 'profiles' => 'profiles#index'
+  get 'profiles/show'
+  get 'profiles/index'
+  get 'profiles/feed'
 
   resources :tweets
   devise_for :users
 
-  root 'epicenter#feed'
+  root 'profiles#index'
 
 end
